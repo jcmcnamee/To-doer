@@ -10,23 +10,30 @@
     grid-row: 1;
 }
   
-#sidebar {
+#listmenu-container {
     grid-row: 2;
     grid-column-start: 1;
+
+    display: flex;
+    flex-direction: column;
 }
   
-#list-container {
+#tasklist-container {
     z-index: 1;
     grid-column: 2;
     grid-row: 2 / span 2;
 
     display: flex;
     flex-direction: column;
-
 }
 
-.list-flex {
+.h-flex {
     display: flex;
+}
+
+.v-flex {
+    display: flex;
+    flex-direction: column;
 }
 
 .list-item {
@@ -38,9 +45,6 @@
     grid-row: 3;
 }
 
-.task {
-    display: flex;
-}
 
 .task-text {
     flex-basis: 80%;

@@ -3,34 +3,40 @@
 <%- include("partials/modals.ejs") %>
 
 <div id="main-grid">
-  <div id="topnav"></div>
-  <div id="sidebar">
+  <div id="topnav" class="navbar"></div>
+  <div id="listmenu-container" class="navbar v-flex">
     <% for (list of lists){ %>
-      <div class="list-flex">
-        <div class="list-item"> <%= list.name %> </div>
+      <div class="list-container">
+        <div class="listmenu-item"> <%= list.name %> </div>
         <div class="list-option">
-          <img class="icon" src="/images/trash.png" alt="Delete list"/>
+          <img class="btn rm-list" src="/images/trash.png" alt="Delete list"/>
         </div>
       </div>
     <% } %>
   </div>
-  <div id="list-container">
+  <div id="tasklist-container" class="v-flex">
+    
     <% for (let i = 0; i < lists[currentList].tasks.length; i++) { %>
-      <div class="task">
-        <div class="checkbox-div"><input type="checkbox"/></div>
+      <form action="/taskComplete" method="POST" id="checkboxForm">
+      <div class="task-container h-flex">
+        <div class="checkbox-container">
+          <input type="checkbox" id="<%= 'taskCheckbox' + i %>" class="task-checkbox" name="taskCheckbox" value=" <%= i %> "/>
+        </div>
         <div class="task-text"><%= lists[currentList].tasks[i].text %></div>
-        <div class="icon">
-          <img class="icon add-task" src="/images/pencil.png" alt="Add a new task"/>
+        <div class="btn-container h-flex">
+          <img class="btn edit-task" src="/images/pencil.png" alt="Add a new task"/>
+          <img class="btn rm-task" src="/images/trash.png" alt="Remove task"/>
+          </div>
+        </div>
+        </form>
+        <% } %>
+      <div class="task-container h-flex">
+        <div class="checkbox-div"></div>
+        <div class="task-text"></div>
+        <div class="btn-container">
+          <img class="btn add-task" src="/images/plus.png" alt="Add a new task"/>
         </div>
       </div>
-      <% } %>
-    <div class="task">
-      <div class="checkbox-div"></div>
-      <div class="task-text"></div>
-      <div class="icon">
-        <img class="icon add-task" src="/images/plus.png" alt="Add a new task"/>
-      </div>
-    </div>
   </div>
   <div class="add-list list-flex">
     <div class="list-item">Add list</div>

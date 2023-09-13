@@ -41,6 +41,16 @@ app.post("/addTask", (req, res) => {
   res.render("index.ejs", { lists, currentList });
 });
 
+app.post("/taskComplete", (req, res) => {
+  
+  for (let taskID of req.body.taskCheckbox) {
+    console.log(taskID);
+    // let taskStatus = lists[currentList].tasks[taskID].completed;
+    // taskStatus = !taskStatus;
+    // console.log(lists[currentList].tasks.completed);
+  };
+});
+
 app.listen(port, () => {
   console.log(`App listening on port ${port}.`);
 });

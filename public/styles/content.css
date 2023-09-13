@@ -16,16 +16,12 @@ body {
   background-color: lightslategray;
 }
 
-#list-container {
-  border-radius: 2%;
+#tasklist-container {
+  border-radius: 50px;
   background-color: slateblue;
 }
 
-.list-name {
-  border-style: dotted;
-}
-
-.task {
+.task-container {
   border-style: dashed;
   border-width: 1px;
 }
