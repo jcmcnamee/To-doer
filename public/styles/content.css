@@ -1,0 +1,36 @@
+body {
+  background-color: slategray;
+}
+
+#main-grid {
+  background-color: lightslategray;
+  border-style: dotted;
+
+}
+
+#topnav {
+  background-color: lightslategray;
+}
+
+#sidebar {
+  background-color: lightslategray;
+}
+
+#list-container {
+  border-radius: 2%;
+  background-color: slateblue;
+}
+
+.list-name {
+  border-style: dotted;
+}
+
+.task {
+  border-style: dashed;
+  border-width: 1px;
+}
+
+.task-text {
+  border-style: dotted;
+  border-width: 1px;
+}

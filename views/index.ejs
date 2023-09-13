@@ -1,0 +1,43 @@
+<%- include("partials/header.ejs") %>
+
+<%- include("partials/modals.ejs") %>
+
+<div id="main-grid">
+  <div id="topnav"></div>
+  <div id="sidebar">
+    <% for (list of lists){ %>
+      <div class="list-flex">
+        <div class="list-item"> <%= list.name %> </div>
+        <div class="list-option">
+          <img class="icon" src="/images/trash.png" alt="Delete list"/>
+        </div>
+      </div>
+    <% } %>
+  </div>
+  <div id="list-container">
+    <% for (let i = 0; i < lists[currentList].tasks.length; i++) { %>
+      <div class="task">
+        <div class="checkbox-div"><input type="checkbox"/></div>
+        <div class="task-text"><%= lists[currentList].tasks[i].text %></div>
+        <div class="icon">
+          <img class="icon add-task" src="/images/pencil.png" alt="Add a new task"/>
+        </div>
+      </div>
+      <% } %>
+    <div class="task">
+      <div class="checkbox-div"></div>
+      <div class="task-text"></div>
+      <div class="icon">
+        <img class="icon add-task" src="/images/plus.png" alt="Add a new task"/>
+      </div>
+    </div>
+  </div>
+  <div class="add-list list-flex">
+    <div class="list-item">Add list</div>
+    <div class-="list-option">
+      <img class="icon add-list" src="/images/plus.png" alt="Add list"/>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
