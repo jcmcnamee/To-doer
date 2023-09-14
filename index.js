@@ -28,6 +28,7 @@ class List {
 
 const dailyList = new List("Daily List");
 let lists = [];
+let completedTasks = [];
 let currentList = 0;
 lists.push(dailyList);
 
@@ -42,14 +43,39 @@ app.post("/addTask", (req, res) => {
 });
 
 app.post("/taskComplete", (req, res) => {
-  
-  for (let taskID of req.body.taskCheckbox) {
-    console.log(taskID);
-    // let taskStatus = lists[currentList].tasks[taskID].completed;
-    // taskStatus = !taskStatus;
-    // console.log(lists[currentList].tasks.completed);
+  if (req.body.taskCheckbox) {
+    completedTasks = [...req.body.taskCheckbox];
+    for (let task in lists[currentList].tasks) {
+      if (completedTasks.includes(task)) {
+        lists[currentList].tasks[task].completed = true;
+       
+      } else {
+        lists[currentList].tasks[task].completed = false;
+      };
+    };
+  } else {
+    for (let task of lists[currentList].tasks) {
+      task.completed = false;
+    }
+    completedTasks = [];
   };
+console.log(lists[currentList].tasks);
+res.render("index.ejs", { lists, currentList });
 });
+
+
+  // for (let task in lists[currentList].tasks) {
+  //   if (req.body.taskCheckbox.includes(lists[currentList].tasks[task])) {
+  //     lists[currentList].tasks[task].completed = true;
+  //     console.log(lists[currentList].task.text + " completed is: " + lists[currentList].tasks[task].completed);
+  //   } else {
+  //     lists[currentList].tasks[task].completed = false;
+  //     // console.log(lists[currentList].task.text + " completed is: " + lists[currentList].tasks[task].completed);
+  //   }
+  // };
+
+  // console.log(lists[currentList].tasks);
+// });
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}.`);
