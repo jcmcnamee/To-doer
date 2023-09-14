@@ -30,7 +30,12 @@ const dailyList = new List("Daily List");
 let lists = [];
 let completedTasks = [];
 let currentList = 0;
+
+// Initialise a list and some tasks:
 lists.push(dailyList);
+// lists[0].addTask(new Task("Tidy my room"));
+// lists[0].addTask(new Task("Do the washing"));
+// lists[0].addTask(new Task("Book a holiday"));
 
 app.get("/", (req, res) => {
   res.render("index.ejs", {lists, currentList})
@@ -59,23 +64,17 @@ app.post("/taskComplete", (req, res) => {
     }
     completedTasks = [];
   };
-console.log(lists[currentList].tasks);
 res.render("index.ejs", { lists, currentList });
 });
 
+app.post("/delTask", (req, res) => {
+  lists[currentList].tasks.splice(req.body.taskID, 1);
+  res.render("index.ejs", { lists, currentList });
+});
 
-  // for (let task in lists[currentList].tasks) {
-  //   if (req.body.taskCheckbox.includes(lists[currentList].tasks[task])) {
-  //     lists[currentList].tasks[task].completed = true;
-  //     console.log(lists[currentList].task.text + " completed is: " + lists[currentList].tasks[task].completed);
-  //   } else {
-  //     lists[currentList].tasks[task].completed = false;
-  //     // console.log(lists[currentList].task.text + " completed is: " + lists[currentList].tasks[task].completed);
-  //   }
-  // };
-
-  // console.log(lists[currentList].tasks);
-// });
+app.post("/editTask", (req, res) => {
+  
+});
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}.`);

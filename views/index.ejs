@@ -15,7 +15,7 @@
   <div id='tasklist-container' class='v-flex'>
     <form action='/taskComplete' method='POST' id='checkboxForm'>
     <% for (let i = 0; i < lists[currentList].tasks.length; i++) { %>
-      <div class='task-container h-flex'>
+      <div class='task-container h-flex' id=<%= i %>>
         <div class='checkbox-container'>
           <input type='checkbox' id='task<%= i %>' class='task-checkbox' name='taskCheckbox' value=<%= i %> <% if (lists[currentList].tasks[i].completed) { %>checked<% } %>>
         </div>
@@ -29,8 +29,14 @@
             class='btn edit-task'
             src='/images/pencil.png'
             alt='Add a new task'
+            id=<%= i %>
           />
-          <img class='btn rm-task' src='/images/trash.png' alt='Remove task' />
+          <img
+            class='btn rm-task'
+            src='/images/trash.png'
+            alt='Remove task' 
+            id=<%= i %>
+            />
         </div>
       </div>
     <% } %>
